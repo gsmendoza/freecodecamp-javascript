@@ -60,7 +60,7 @@ Yes!
 
 ```
 1 != "1"    // false
-7   > '3'  // true
+7 > '3'  // true
 ```
 
 ## What kind of equality do switch statements use?
@@ -75,6 +75,7 @@ switch(value) {
     statements;
     break;
   ...
+
   default:
     defaultStatement;
     break;
@@ -125,3 +126,5 @@ var anotherObject = {
 
 - base case
 - recursive call
+
+## Todo: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-data-structures/check-if-an-object-has-a-property
