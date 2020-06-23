@@ -33,8 +33,6 @@ describe("Functional Programming: Refactor Global Variables Out of Functions", f
     it("does not modify the book list", function() {
       let result = remove(bookList, bookName);
 
-      console.log(result);
-
       expect(result).toEqual([])
       expect(bookList).toEqual([bookName]);
     });
