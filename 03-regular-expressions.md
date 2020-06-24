@@ -100,7 +100,7 @@ let checkPass = /(?=\w{3,6})(?=\D*\d)/;
 checkPass.test(password); // Returns true
 ```
 
-## How do we specify a pattern where the a subpattern is repeated?
+## How do we specify a pattern where the subpattern is repeated?
 
 With capture groups:
 
