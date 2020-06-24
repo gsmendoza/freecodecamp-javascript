@@ -1,18 +1,18 @@
 module.exports = {
   plugins: [
-    'jasmine'
+    'jasmine',
   ],
   env: {
     browser: true,
     es2020: true,
-    jasmine: true
+    jasmine: true,
   },
   extends: [
-    'standard'
+    'airbnb-base',
   ],
   parserOptions: {
-    ecmaVersion: 11
+    ecmaVersion: 11,
   },
   rules: {
-  }
-}
+  },
+};
