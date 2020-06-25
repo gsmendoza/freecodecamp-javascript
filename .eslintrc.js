@@ -14,5 +14,6 @@ module.exports = {
     ecmaVersion: 11,
   },
   rules: {
+    'implicit-arrow-linebreak': 'off',
   },
 };
