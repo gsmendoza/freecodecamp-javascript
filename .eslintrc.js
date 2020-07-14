@@ -15,5 +15,6 @@ module.exports = {
   },
   rules: {
     'implicit-arrow-linebreak': 'off',
+    'no-unused-vars': 'off',
   },
 };
