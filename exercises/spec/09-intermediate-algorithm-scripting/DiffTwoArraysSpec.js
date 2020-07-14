@@ -23,8 +23,6 @@ describe("Intermediate Algorithm Scripting: Diff Two Arrays", () => {
         });
 
         it('returns []', () => {
-          console.log(arr1, arr2);
-
           expect(executeDiffArray()).toEqual([]);
         });
       });
