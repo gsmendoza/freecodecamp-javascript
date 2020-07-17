@@ -16,15 +16,53 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
     describe('deduct(amount)', () => {
       describe('when the amount can be exactly deducted from the cash', () => {
         it('returns the subset of the cash that equals the amount', () => {
-          const cash = new Cash([['ONE', 3], ['FIVE', 1]]);
+          const cash = new Cash([
+            ['PENNY', 1.01],
+            ['NICKEL', 2.05],
+            ['DIME', 3.1],
+            ['QUARTER', 4.25],
+            ['ONE', 90],
+            ['FIVE', 55],
+            ['TEN', 20],
+            ['TWENTY', 60],
+            ['ONE HUNDRED', 100],
+          ]);
 
-          const amount = 2;
+          const amount = 96.74;
           const result = cash.deduct(amount);
 
-          expect(result.cashBreakdown.length).toEqual(1);
+          const expectedResult = [
+            ['TWENTY', 60],
+            ['TEN', 20],
+            ['FIVE', 15],
+            ['ONE', 1],
+            ['QUARTER', 0.5],
+            ['DIME', 0.2],
+            ['PENNY', 0.04],
+          ];
 
-          expect(result.cashBreakdown[0][0]).toEqual('ONE');
-          expect(result.cashBreakdown[0][1]).toEqual(2);
+          expect(result.cashBreakdown).toEqual(expectedResult);
+        });
+      });
+
+      describe('when the amount cannot be exactly deducted from the cash', () => {
+        it('returns an empty Cash', () => {
+          const cash = new Cash([
+            ['PENNY', 0.01],
+            ['NICKEL', 2.05],
+            ['DIME', 3.1],
+            ['QUARTER', 4.25],
+            ['ONE', 90],
+            ['FIVE', 55],
+            ['TEN', 20],
+            ['TWENTY', 60],
+            ['ONE HUNDRED', 100],
+          ]);
+
+          const amount = 96.74;
+          const result = cash.deduct(amount);
+
+          expect(result.cashBreakdown).toEqual([]);
         });
       });
     });
