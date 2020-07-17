@@ -12,6 +12,10 @@ class DenominationCount {
     });
   }
 
+  get name() {
+    return this.denomination.name;
+  }
+
   get asCashBreakdownItem() {
     return [
       this.denomination.name,

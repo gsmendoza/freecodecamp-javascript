@@ -14,21 +14,23 @@ class Cash {
   }
 
   add(other) {
-    const result = [...this.cashBreakdown];
+    const denominationCounts = [...this.denominationCounts];
 
-    other.cashBreakdown.forEach((otherCashBreakdownItem) => {
-      const matchingCashBreakdownItem = result.find(
-        (cashBreakdownItem) => cashBreakdownItem[0] === otherCashBreakdownItem[0],
+    other.denominationCounts.forEach((otherDenominationCount) => {
+      const matchingDenominationCount = denominationCounts.find(
+        (denominationCount) => denominationCount.name === otherDenominationCount.name,
       );
 
-      if (matchingCashBreakdownItem) {
-        matchingCashBreakdownItem[1] += otherCashBreakdownItem[1];
+      if (matchingDenominationCount) {
+        matchingDenominationCount.units += otherDenominationCount.units;
       } else {
-        result.push([...otherCashBreakdownItem]);
+        denominationCounts.push(otherDenominationCount);
       }
     });
 
-    return new Cash(result);
+    const mapToCashBreakdownItems = (denominationCount) => denominationCount.asCashBreakdownItem;
+
+    return new Cash(denominationCounts.map(mapToCashBreakdownItems));
   }
 
   deduct(amount) {
