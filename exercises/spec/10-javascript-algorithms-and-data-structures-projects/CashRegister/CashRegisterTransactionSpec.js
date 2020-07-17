@@ -1,4 +1,4 @@
-/* global CashRegisterTransaction, Cash */
+/* global CashRegisterTransaction, CashRegister, Cash */
 
 describe('JavaScript Algorithms and Data Structures Projects: Cash Register', () => {
   describe('CashRegisterTransaction', () => {
@@ -7,16 +7,7 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         it('returns CLOSED', () => {
           const cashAmount = 5;
           const price = 3;
-
-          const cashRegister = {
-            cash: new Cash([['ONE', 2]]),
-
-            withdraw: (amount) => {
-              if (amount !== 2) { throw new Error('amount should be equal to 2'); }
-
-              return new Cash([['ONE', 2]]);
-            },
-          };
+          const cashRegister = new CashRegister({ cashBreakdown: [['ONE', 2]] });
 
           const cashRegisterTransaction = new CashRegisterTransaction(
             { cashRegister, price, cashAmount },
@@ -30,16 +21,7 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         it('returns CLOSED', () => {
           const cashAmount = 5;
           const price = 3;
-
-          const cashRegister = {
-            cash: new Cash([['ONE', 3]]),
-
-            withdraw: (amount) => {
-              if (amount !== 2) { throw new Error('amount should be equal to 2'); }
-
-              return new Cash([['ONE', 2]]);
-            },
-          };
+          const cashRegister = new CashRegister({ cashBreakdown: [['ONE', 3]] });
 
           const cashRegisterTransaction = new CashRegisterTransaction(
             { cashRegister, price, cashAmount },
@@ -53,16 +35,7 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         it('returns INSUFFICIENT_FUNDS', () => {
           const cashAmount = 5;
           const price = 3;
-
-          const cashRegister = {
-            cash: new Cash([['ONE', 1]]),
-
-            withdraw: (amount) => {
-              if (amount !== 2) { throw new Error('amount should be equal to 2'); }
-
-              return new Cash([]);
-            },
-          };
+          const cashRegister = new CashRegister({ cashBreakdown: [['ONE', 1]] });
 
           const cashRegisterTransaction = new CashRegisterTransaction(
             { cashRegister, price, cashAmount },
@@ -76,16 +49,7 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         it('returns INSUFFICIENT_FUNDS', () => {
           const cashAmount = 5;
           const price = 3;
-
-          const cashRegister = {
-            cash: new Cash([['FIVE', 1]]),
-
-            withdraw: (amount) => {
-              if (amount !== 2) { throw new Error('amount should be equal to 2'); }
-
-              return new Cash([]);
-            },
-          };
+          const cashRegister = new CashRegister({ cashBreakdown: [['FIVE', 1]] });
 
           const cashRegisterTransaction = new CashRegisterTransaction(
             { cashRegister, price, cashAmount },
@@ -104,17 +68,7 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         const expectedChangeAmount = 2; // 5 - 3
         const expectedChangeBreakdown = [['ONE', 2]];
 
-        const cashRegister = {
-          cash: new Cash([['ONE', 3]]),
-
-          withdraw: (amount) => {
-            if (amount !== expectedChangeAmount) {
-              throw new Error(`amount should be equal to ${expectedChangeAmount}`);
-            }
-
-            return { cashBreakdown: expectedChangeBreakdown };
-          },
-        };
+        const cashRegister = new CashRegister({ cashBreakdown: [['ONE', 3]] });
 
         const cashRegisterTransaction = new CashRegisterTransaction(
           { cashRegister, price, cashAmount },
@@ -131,16 +85,7 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         it('returns an empty breakdown', () => {
           const cashAmount = 5;
           const price = 3;
-
-          const cashRegister = {
-            cash: new Cash([['ONE', 1]]),
-
-            withdraw: (amount) => {
-              if (amount !== 2) { throw new Error('amount should be equal to 2'); }
-
-              return new Cash([]);
-            },
-          };
+          const cashRegister = new CashRegister({ cashBreakdown: [['ONE', 1]] });
 
           const cashRegisterTransaction = new CashRegisterTransaction(
             { cashRegister, price, cashAmount },
