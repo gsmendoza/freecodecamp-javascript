@@ -1,39 +1,37 @@
-describe("Functional Programming: Refactor Global Variables Out of Functions", function() {
-  describe("add", function() {
-    let bookList = [];
-
+describe('Functional Programming: Refactor Global Variables Out of Functions', () => {
+  describe('add', () => {
     function add(bookList, bookName) {
       return bookList.concat([bookName]);
     }
 
-    it("does not modify the book list", function() {
-      let bookName = 'Some book name';
+    it('does not modify the book list', () => {
+      const bookList = [];
+      const bookName = 'Some book name';
 
-      let result = add(bookList, bookName);
+      const result = add(bookList, bookName);
 
-      expect(result).toEqual([bookName])
+      expect(result).toEqual([bookName]);
       expect(bookList).toEqual([]);
-    })
+    });
   });
 
-  describe("remove", function() {
-    let bookName = 'Some book name';
-    let bookList = [bookName];
+  describe('remove', () => {
+    function remove(bookList, bookName) {
+      const bookIndex = bookList.indexOf(bookName);
 
-    function remove (bookList, bookName) {
-      var book_index = bookList.indexOf(bookName);
+      if (bookIndex < 0) { return null; }
 
-      if (book_index >= 0) {
-        return bookList
-          .slice(0, book_index)
-          .concat(bookList.slice(book_index + 1, book_index.length));
-      }
+      return bookList
+        .slice(0, bookIndex)
+        .concat(bookList.slice(bookIndex + 1, bookIndex.length));
     }
 
-    it("does not modify the book list", function() {
-      let result = remove(bookList, bookName);
+    it('does not modify the book list', () => {
+      const bookName = 'Some book name';
+      const bookList = [bookName];
+      const result = remove(bookList, bookName);
 
-      expect(result).toEqual([])
+      expect(result).toEqual([]);
       expect(bookList).toEqual([bookName]);
     });
   });

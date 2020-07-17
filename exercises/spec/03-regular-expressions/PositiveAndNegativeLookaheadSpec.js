@@ -1,45 +1,44 @@
-describe("Regular Expressions: Positive and Negative Lookahead", function() {
-  describe("pwRegex", function() {
+describe('Regular Expressions: Positive and Negative Lookahead', () => {
+  describe('pwRegex', () => {
     const pwRegex = /(?=.{6,})(?=^\D.*\d{2,})/;
 
-    describe("when the password is greater than 5 characters long, " +
-      "do not begin with numbers, and have two consecutive digits", function() {
-
+    describe('when the password is greater than 5 characters long, '
+      + 'do not begin with numbers, and have two consecutive digits', () => {
       const sampleWords = [
-        "abcd12",
-        "a12bcd",
-        "astr1on11aut"
+        'abcd12',
+        'a12bcd',
+        'astr1on11aut',
       ];
 
-      for(let i = 0; i < sampleWords.length; i++) {
-        describe(`such as ${sampleWords[i]}`, function() {
-          it("matches the password", function() {
+      for (let i = 0; i < sampleWords.length; i += 1) {
+        describe(`such as ${sampleWords[i]}`, () => {
+          it('matches the password', () => {
             expect(pwRegex.test(sampleWords[i])).toBeTruthy();
           });
         });
       }
     });
 
-    describe("when the password is 5 characters long, ", function() {
-      const sampleWord = "abc12";
+    describe('when the password is 5 characters long, ', () => {
+      const sampleWord = 'abc12';
 
-      it("does not match the password", function() {
+      it('does not match the password', () => {
         expect(pwRegex.test(sampleWord)).toBeFalsy();
       });
     });
 
-    describe("when the password begins with a number, ", function() {
-      const sampleWord = "12abcd";
+    describe('when the password begins with a number, ', () => {
+      const sampleWord = '12abcd';
 
-      it("does not match the password", function() {
+      it('does not match the password', () => {
         expect(pwRegex.test(sampleWord)).toBeFalsy();
       });
     });
 
-    describe("when the password has only one number, ", function() {
-      const sampleWord = "abcde1";
+    describe('when the password has only one number, ', () => {
+      const sampleWord = 'abcde1';
 
-      it("does not match the password", function() {
+      it('does not match the password', () => {
         expect(pwRegex.test(sampleWord)).toBeFalsy();
       });
     });

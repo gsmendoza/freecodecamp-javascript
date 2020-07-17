@@ -1,7 +1,7 @@
-describe("Intermediate Algorithm Scripting: Diff Two Arrays", () => {
-  describe("diffArray", () => {
+describe('Intermediate Algorithm Scripting: Diff Two Arrays', () => {
+  describe('diffArray', () => {
     function itemsInSourceNotInTarget(source, target) {
-      return source.filter(item => !target.includes(item));
+      return source.filter((item) => !target.includes(item));
     }
 
     function diffArray(arr1, arr2) {
@@ -10,7 +10,7 @@ describe("Intermediate Algorithm Scripting: Diff Two Arrays", () => {
 
     let arr1 = [];
     let arr2 = [];
-    let executeDiffArray = () => diffArray(arr1, arr2);
+    const executeDiffArray = () => diffArray(arr1, arr2);
 
     describe('when arr1 is empty', () => {
       beforeEach(() => {
@@ -35,9 +35,8 @@ describe("Intermediate Algorithm Scripting: Diff Two Arrays", () => {
         it('returns arr2', () => {
           expect(executeDiffArray()).toEqual([0]);
         });
-      })
-    })
-
+      });
+    });
 
     describe('when arr1 has an item', () => {
       beforeEach(() => {

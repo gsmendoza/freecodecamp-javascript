@@ -1,7 +1,9 @@
-describe("Functional Programming: Understand the Hazards of Using Imperative Code", function() {
-  describe("Window", function() {
+describe('Functional Programming: Understand the Hazards of Using Imperative Code', () => {
+  describe('Window', () => {
+    /* eslint-disable func-names */
+
     // tabs is an array of titles of each site open within the window
-    var Window = function(tabs) {
+    const Window = function (tabs) {
       this.tabs = tabs; // We keep a record of the array inside the object
     };
 
@@ -19,11 +21,10 @@ describe("Functional Programming: Understand the Hazards of Using Imperative Cod
 
     // When you close a tab
     Window.prototype.tabClose = function (index) {
-
       // Only change code below this line
 
-      var tabsBeforeIndex = this.tabs.slice(0, index); // Get the tabs before the tab
-      var tabsAfterIndex = this.tabs.slice(index + 1); // Get the tabs after the tab
+      const tabsBeforeIndex = this.tabs.slice(0, index); // Get the tabs before the tab
+      const tabsAfterIndex = this.tabs.slice(index + 1); // Get the tabs after the tab
 
       this.tabs = tabsBeforeIndex.concat(tabsAfterIndex); // Join them together
 
@@ -32,14 +33,16 @@ describe("Functional Programming: Understand the Hazards of Using Imperative Cod
       return this;
     };
 
-    describe(".tabClose", function() {
-      it("closes the tab in the index", function() {
-        var videoWindow = new Window(['Netflix', 'YouTube', 'Vimeo', 'Vine']);
+    /* eslint-enable func-names */
+
+    describe('.tabClose', () => {
+      it('closes the tab in the index', () => {
+        const videoWindow = new Window(['Netflix', 'YouTube', 'Vimeo', 'Vine']);
 
         videoWindow.tabClose(2);
 
         expect(videoWindow.tabs).toEqual(['Netflix', 'YouTube', 'Vine']);
       });
-    })
+    });
   });
 });

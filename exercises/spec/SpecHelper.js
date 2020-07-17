@@ -1,15 +1,15 @@
-beforeEach(function () {
+beforeEach(() => {
   jasmine.addMatchers({
-    toBePlaying: function () {
+    toBePlaying() {
       return {
-        compare: function (actual, expected) {
-          var player = actual;
+        compare(actual, expected) {
+          const player = actual;
 
           return {
-            pass: player.currentlyPlayingSong === expected && player.isPlaying
+            pass: player.currentlyPlayingSong === expected && player.isPlaying,
           };
-        }
+        },
       };
-    }
+    },
   });
 });
