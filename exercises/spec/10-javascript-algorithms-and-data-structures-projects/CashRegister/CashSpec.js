@@ -41,15 +41,33 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
     });
 
     describe('add(other)', () => {
-      it('combines the cash breakdown of other with the cash', () => {
-        const cash = new Cash([['FIVE', 10]]);
-        const other = new Cash([['FIVE', 20]]);
+      describe('when other has the same denomination', () => {
+        it('combines the cash breakdown of other with the cash', () => {
+          const cash = new Cash([['FIVE', 10]]);
+          const other = new Cash([['FIVE', 20]]);
 
-        const result = cash.add(other);
+          const result = cash.add(other);
 
-        expect(result.cashBreakdown.length).toEqual(1);
-        expect(result.cashBreakdown[0][0]).toEqual('FIVE');
-        expect(result.cashBreakdown[0][1]).toEqual(30); // 10 + 20
+          expect(result.cashBreakdown.length).toEqual(1);
+          expect(result.cashBreakdown[0][0]).toEqual('FIVE');
+          expect(result.cashBreakdown[0][1]).toEqual(30); // 10 + 20
+        });
+      });
+
+      describe('when other has a different denomination', () => {
+        it('combines the cash breakdown of other with the cash', () => {
+          const cash = new Cash([['FIVE', 10]]);
+          const other = new Cash([['ONE', 20]]);
+
+          const result = cash.add(other);
+
+          expect(result.cashBreakdown.length).toEqual(2);
+          expect(result.cashBreakdown[0][0]).toEqual('FIVE');
+          expect(result.cashBreakdown[0][1]).toEqual(10);
+
+          expect(result.cashBreakdown[1][0]).toEqual('ONE');
+          expect(result.cashBreakdown[1][1]).toEqual(20);
+        });
       });
     });
   });
