@@ -108,5 +108,29 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         });
       });
     });
+
+    describe('normalize', () => {
+      describe('when a denomination has no units', () => {
+        it('is excluded', () => {
+          const cash = new Cash([['FIVE', 1], ['ONE', 0]]);
+          const normalizedCash = cash.normalize;
+
+          expect(normalizedCash.denominationCounts.length).toEqual(1);
+          expect(cash.denominationCounts[0].denomination.name).toEqual('FIVE');
+        });
+      });
+
+      describe('when denominations are not sorted', () => {
+        it('are sorted for high to low denominations', () => {
+          const cash = new Cash([['ONE', 2], ['FIVE', 3]]);
+          const normalizedCash = cash.normalize;
+
+          expect(normalizedCash.denominationCounts.length).toEqual(2);
+          expect(normalizedCash.denominationCounts[0].denomination.name).toEqual('FIVE');
+
+          expect(normalizedCash.denominationCounts[1].denomination.name).toEqual('ONE');
+        });
+      });
+    });
   });
 });
