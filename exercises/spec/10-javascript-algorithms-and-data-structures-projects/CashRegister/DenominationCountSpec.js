@@ -14,5 +14,14 @@ describe('JavaScript Algorithms and Data Structures Projects: Cash Register', ()
         expect(subsumedDenominationCount.units).toEqual(1);
       });
     });
+
+    describe('asCashBreakdownItem', () => {
+      it('returns the denomination count as a cash breakdown item', () => {
+        const denomination = Denomination.find('FIVE');
+        const denominationCount = new DenominationCount({ denomination, units: 2 });
+
+        expect(denominationCount.asCashBreakdownItem).toEqual(['FIVE', 10]);
+      });
+    });
   });
 });
